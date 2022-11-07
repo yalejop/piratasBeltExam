@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
+import NuevoPirata from './componentes/NuevoPirata';
+import Pirata from './componentes/Pirata';
+import TodosPiratas from './componentes/TodosPiratas';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  return(
+  <div className="container">
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact render={()=> <TodosPiratas/>} />
+        <Route path="/new" render={()=> <NuevoPirata/>} />
+        {/* <Route path="/new">
+          <NuevoPirata/>
+        </Route> */}
+        <Route path="/pirata/:id" render={()=> <Pirata/>} />
+      </Switch>
+    </BrowserRouter>
+  </div>
+  )
+
+
 }
 
 export default App;
+
